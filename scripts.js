@@ -51,7 +51,7 @@ function displayChat(messages) {
 
         if (message.type === 'status') {
             chat.innerHTML += `
-                <li class="message status">
+                <li class="message status" data-identifier="message">
                     <p><span>(${message.time})</span> <strong>${message.from}</strong> ${message.text}</p>
                 </li>
             `;
@@ -59,7 +59,7 @@ function displayChat(messages) {
             document.querySelector('.message:last-child').scrollIntoView();
         } else if (message.type === 'message') {
             chat.innerHTML += `
-                <li class="message">
+                <li class="message" data-identifier="message">
                     <p><span>(${message.time})</span> <strong>${message.from}</strong> para <strong>${message.to}</strong> ${message.text}</p>
                 </li>
             `;
@@ -67,7 +67,7 @@ function displayChat(messages) {
             document.querySelector('.message:last-child').scrollIntoView();
         } else if (message.type === 'private_message' && message.to === username) {
             chat.innerHTML += `
-                <li class="message private">
+                <li class="message private" data-identifier="message">
                     <p><span>(${message.time})</span> <strong>${message.from}</strong> reservadamente para <strong>${message.to}</strong> ${message.text}</p>
                 </li>
             `;
@@ -97,4 +97,12 @@ function sendMessage() {
     });
 }
 
-sendUsername();
+function toggleMenu() {
+    const sideMenu = document.querySelector('aside');
+    const background = document.querySelector('.background');
+
+    sideMenu.classList.toggle('hidden');
+    background.classList.toggle('hidden')
+}
+
+//sendUsername();

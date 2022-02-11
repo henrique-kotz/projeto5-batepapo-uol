@@ -17,16 +17,62 @@
 <body>
     <header>
         <img src="images/logo.svg" alt="Bate Papo UOL Logo">
-        <ion-icon name="people"></ion-icon>
+        <ion-icon name="people" onclick="toggleMenu()"></ion-icon>
     </header>
 
     <main>
         <ul></ul>
+        <div class="background hidden" onclick="toggleMenu()"></div>
     </main>
+
+    <aside class="hidden">
+        <h2>Escolha um contato para enviar mensagem:</h2>
+        <ul class="contacts">
+            <li>
+                <div>
+                    <ion-icon name="people"></ion-icon>
+                    <p>Todos</p>
+                </div>
+                <img src="images/check.svg" alt="checkmark">
+            </li>
+            <li>
+                <div>
+                    <ion-icon name="person-circle"></ion-icon>
+                    <p>João</p>
+                </div>
+                <img src="images/check.svg" alt="checkmark" class="hidden">
+            </li>
+            <li>
+                <div>
+                    <ion-icon name="person-circle"></ion-icon>
+                    <p>Maria</p>
+                </div>
+                <img src="images/check.svg" alt="checkmark" class="hidden">
+            </li>
+        </ul>
+
+        <h2>Escolha a visibilidade:</h2>
+        <ul class="visibility">
+            <li>
+                <div>
+                    <ion-icon name="lock-open"></ion-icon>
+                    <p>Público</p>
+                </div>
+                <img src="images/check.svg" alt="checkmark">
+            </li>
+            <li>
+                <div>
+                    <ion-icon name="lock-closed"></ion-icon>
+                    <p>Reservadamente</p>
+                </div>
+                <img src="images/check.svg" alt="checkmark" class="hidden">
+            </li>
+        </ul>
+    </aside>
 
     <footer>
         <input type="text" placeholder="Escreva aqui...">
-        <ion-icon name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
+        <ion-icon name="paper-plane-outline" onclick="sendMessage()" data-identifier="send-message"></ion-icon>
     </footer>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
