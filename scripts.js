@@ -1,4 +1,36 @@
-let username = '';
+let username = {name: ''};
+
+function sendUsername() {
+    username.name = prompt('Digite o nome do usuário:');
+    
+    const promise = axios.post('https://mock-api.driven.com.br/api/v4/uol/participants', username);
+    promise.then(() => {
+        getMessages();
+        stayOnline();
+        setInterval(getMessages, 3000);
+    });
+    promise.catch((error) => {
+        if (error.response.status === 400) {
+            alert('Esse nome não está disponível');
+            sendUsername();
+        } else {
+            alert('Erro desconhecido');
+            window.location.reload();
+        }
+    })
+}
+
+function stayOnline() {
+    setInterval(() => {
+        const promise = axios.post('https://mock-api.driven.com.br/api/v4/uol/status', username);
+        promise.then((response) => {
+            console.log(response.data);
+        });
+        promise.catch((error) => {
+            console.log(error.response.status);
+        });
+    }, 5000);
+}
 
 function getMessages() {
     const promise = axios.get('https://mock-api.driven.com.br/api/v4/uol/messages');
@@ -45,5 +77,24 @@ function displayChat(messages) {
     }
 }
 
-getMessages();
-setInterval(getMessages, 3000);
+function sendMessage() {
+    const messageText = document.querySelector('footer input').value;
+    const message = {
+        from: username.name,
+        to: "Todos",
+        text: messageText,
+        type: "message"
+    };
+
+    const promise = axios.post('https://mock-api.driven.com.br/api/v4/uol/messages', message);
+    promise.then((response) => {
+        console.log(response.data);
+        getMessages();
+    });
+    promise.catch((error) => {
+        console.log(error.response);
+        window.location.reload();
+    });
+}
+
+sendUsername();
