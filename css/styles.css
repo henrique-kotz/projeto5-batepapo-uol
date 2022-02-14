@@ -45,6 +45,7 @@ main ul {
         font-weight: 400;
         line-height: 18px;
         line-break: auto;
+        word-break: break-word;
         color: #000;
         background-color: #fff;
 
@@ -92,9 +93,14 @@ main ul {
         font-size: 18px;
         font-weight: 400;
         text-align: center;
+        border: 1px solid #d7d7d7;
+        border-radius: 4px;
     }
         .login-screen input::placeholder {
             color: #aeaeae;
+        }
+        .login-screen input:focus {
+            outline: 2px solid #666;
         }
         .login-screen input:focus::placeholder {
             color: transparent;
@@ -140,10 +146,11 @@ aside {
     aside ul {
         width: 100%;
         max-height: 400px;
+        overflow-y: scroll;
     }
     aside li {
         width: 100%;
-        height: 36px;
+        min-height: 36px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -159,6 +166,7 @@ aside {
         aside li p {
             font-size: 16px;
             font-weight: 400;
+            word-break: break-word;
         }
         aside li img {
             width: 10px;
@@ -177,7 +185,7 @@ aside {
 
 footer {
     width: 100%;
-    height: 80px;
+    min-height: 80px;
     padding: 0 18px;
     background-color: #fff;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
@@ -193,6 +201,7 @@ footer {
     footer input {
         min-height: 30px;
         font-size: 18px;
+        word-break: break-word;
         color: #000;
         border: transparent;
         flex-grow: 1;
@@ -207,6 +216,12 @@ footer {
         footer input:focus::placeholder {
             color: rgba(0, 0, 0, 0.5);
         }
+    footer p {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 25px;
+        word-break: break-word;
+    }
     footer ion-icon {
         color: #000;
         font-size: 32px;
