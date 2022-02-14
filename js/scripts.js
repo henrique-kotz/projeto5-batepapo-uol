@@ -135,7 +135,7 @@ function getParticipants() {
 function displayParticipants(participants) {
     const userList = document.querySelector('.contacts');
     userList.innerHTML = `
-        <li onclick="selectContact(this)">
+        <li onclick="selectContact(this)" data-identifier="participant">
             <div>
                 <ion-icon name="people"></ion-icon>
                 <p>Todos</p>
@@ -146,7 +146,7 @@ function displayParticipants(participants) {
 
     for (let i=0; i<participants.length; i++) {
         userList.innerHTML += `
-        <li onclick="selectContact(this)">
+        <li onclick="selectContact(this)" data-identifier="participant">
             <div>
                 <ion-icon name="person-circle"></ion-icon>
                 <p>${participants[i].name}</p>
