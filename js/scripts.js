@@ -23,6 +23,12 @@ function sendUsername() {
     });
 }
 
+function sendUsernameEnter (event) {
+    if (event.keyCode === 13) {
+        sendUsername();
+    }
+}
+
 function stayOnline() {
     setInterval(() => {
         const promise = axios.post('https://mock-api.driven.com.br/api/v4/uol/status', username);
@@ -100,7 +106,6 @@ function sendMessage() {
 
     const promise = axios.post('https://mock-api.driven.com.br/api/v4/uol/messages', message);
     promise.then((response) => {
-        console.log(message);
         console.log(response.data);
         getMessages();
         document.querySelector('footer input').value = '';
@@ -109,6 +114,12 @@ function sendMessage() {
         console.log(error.response);
         window.location.reload();
     });
+}
+
+function sendMessageEnter(event) {
+    if (event.keyCode === 13) {
+        sendMessage();
+    }
 }
 
 function getParticipants() {
